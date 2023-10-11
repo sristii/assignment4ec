@@ -1,0 +1,41 @@
+body {
+        font-family: 'Times New Roman', Times, serif; 
+        background-color: #f7d679;
+        text-align: center;
+        margin: 2dvh;
+    }
+
+    .menu {
+        background-color: rgb(236, 167, 83); /* Yellow background color */
+        border: 2px solid #f35e5e;
+        width: 300px;
+        margin: 5px auto;
+        padding: 20px;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    .menu-item {
+        margin: 0;
+    }
+
+    .receipt {
+        margin-top: 2%;
+        background-color: rgb(248, 242, 211); /* Yellow background color */
+        border: 2px solid #f35e5e;
+        width: 300px;
+        margin: 5px auto;
+        padding: 20px;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    #receiptHeader {
+        color: rgb(61, 103, 218);
+        font-style: oblique;
+        font-weight:bold;
+    }
+
+
+
+

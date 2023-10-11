@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Joe's Hotdog Stand</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+ </head>
+
+<body>
+
+        <h1 style="font-weight: bold;">🌭   Joe's Hotdog Stand   🌭</h1>
+
+        <div class="menu">
+                <h2 style="text-align: center; margin-top: 3px; font-style: italic; font-weight: bold;">Menu</h2>
+                <div class="items">
+                        <h3>🌭 Hotdogs: $3.75 each</h3>
+                        <h3>🍟 French Fries: $3 each</h3>
+                        <h3>🥤 Drinks: $2.50 each</h3>
+                </div>
+                
+        </div>
+
+        <div class = "receipt">
+                <h1 id="receiptHeader" style="text-align: center; margin-top: 3px; font-style: italic;"></h1>
+                <hr>
+                <p id="Hotdogs_Quantity"></p>
+                <p id="Hotdogs_total"></p>
+
+                <p id="Fries_Quantity"></p>
+                <p id="Fries_total"></p>
+                
+                <p id="Drinks_Quantity"></p>
+                <p id="Drinks_total"></p>
+                <hr>
+                <p id="subTotal"></p>
+                <p id="disc"></p>
+                <p id="subTotal_D"></p>
+                <hr>
+                <p id="tax"></p>
+                <p id="final_total" style="font-weight: bold; font-style: italic;"></p>
+        </div>
+        
+
+
+
+
+        <script>
+
+                document.getElementById("receiptHeader").innerHTML = "Receipt";
+
+                var priceArr = { Hotdogs: 3.75, Fries: 3.00, Drinks: 2.50 }; 
+
+                var quantArr = { Hotdogs: 0, Fries: 0, Drinks: 0 }; 
+
+                var subTotal = 0;
+
+                for (var i in quantArr) {
+                        quantArr[i] = prompt("How many " + i + " would you like?");
+
+                        document.getElementById(i+"_Quantity").innerHTML = " Quantity: " + quantArr[i].toString();
+                       
+                        var itemTotal = 0.00;
+                        itemTotal = quantArr[i] * priceArr[i];
+                        subTotal += itemTotal;
+
+                        document.getElementById(i+"_total").innerHTML = i+ " Total: " + stringForm(itemTotal);
+                }
+
+                document.getElementById("subTotal").innerHTML =  "Subtotal before Discount: " +  stringForm(subTotal);
+                
+                // DISCOUNTS                
+                var discountAmt = 0.00;
+
+                if (subTotal >= 25.00) {
+                        discountAmt = subTotal * 0.10;
+                        subTotal = subTotal - discountAmt;
+                } 
+
+                document.getElementById("disc").innerHTML = "Discount Amount: " +   stringForm(discountAmt);
+                document.getElementById("subTotal_D").innerHTML =  "Subtotal after Discount: " +  stringForm(subTotal);
+
+
+                // TAX
+                var tax =  subTotal * .0625;
+
+                document.getElementById("tax").innerHTML =  "Tax: " + stringForm(tax);
+
+                var finalTotal = subTotal + tax;
+
+                
+                document.getElementById("final_total").innerHTML =  "Final Total: " +   stringForm(finalTotal);
+
+
+                function stringForm (num) {
+                        var lhs = Math.floor(num);
+                        var rhs = Math.round((num - lhs) * 100.00);
+
+                        var decimalString, intString;
+
+                        if (rhs < 10) {
+                                decimalString = rhs.toString() + "0";
+                        } else {
+                                rhs = Math.floor(rhs);
+                                decimalString = rhs.toString();
+                        }
+
+                        intString = lhs.toString();
+
+                        return "$" + intString + "." + decimalString;
+                }
+        </script>
+
+
+
+</body>
+
+</html>
